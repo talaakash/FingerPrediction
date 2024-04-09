@@ -25,10 +25,11 @@ class AnimatedTextView: UITextView{
     }
     
     private func setup(){
-        isEditable = false
-        isSelectable = false
+        isUserInteractionEnabled = false
+        backgroundColor = UIColor.clear
+        textColor = UIColor.lightGray
+        font = UIFont(name: "Faelorehn", size: 20)
         startShuffleAnimation()
-        
     }
     
     private func startShuffleAnimation() {
@@ -39,7 +40,7 @@ class AnimatedTextView: UITextView{
     
     private func updateText() {
         var shuffledText = ""
-        for _ in 0..<(self.text?.count ?? 0) {
+        for _ in 0...100 {
             shuffledText.append(characters.randomElement()!)
         }
         self.text = shuffledText
