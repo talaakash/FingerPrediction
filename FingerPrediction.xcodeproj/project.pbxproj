@@ -18,6 +18,11 @@
 		389CC0AC2BC421AB00E6084F /* FingerAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 389CC0AB2BC421AB00E6084F /* FingerAnimation.gif */; };
 		389CC0AE2BC4274200E6084F /* UIImageView+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389CC0AD2BC4274200E6084F /* UIImageView+Extention.swift */; };
 		389E20AF2BC5017C00306E53 /* AnimatedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E20AE2BC5017C00306E53 /* AnimatedTextView.swift */; };
+		389E20B22BC5427900306E53 /* Faelorehn.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 389E20B12BC5427900306E53 /* Faelorehn.ttf */; };
+		38F5FB802BC5498400CCC32C /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F5FB7F2BC5498400CCC32C /* SpeechManager.swift */; };
+		38F5FB822BC54DF600CCC32C /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F5FB812BC54DF600CCC32C /* SoundManager.swift */; };
+		38F5FB852BC54E4300CCC32C /* Process.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 38F5FB842BC54E4300CCC32C /* Process.mp3 */; };
+		38F5FB872BC54FA900CCC32C /* BlinkingCursorUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F5FB862BC54FA900CCC32C /* BlinkingCursorUILabel.swift */; };
 		70911432C045063E0D0AC391 /* Pods_FingerPrediction.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4400EC88F3D1E70927D33C /* Pods_FingerPrediction.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +41,11 @@
 		389CC0AB2BC421AB00E6084F /* FingerAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = FingerAnimation.gif; sourceTree = "<group>"; };
 		389CC0AD2BC4274200E6084F /* UIImageView+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extention.swift"; sourceTree = "<group>"; };
 		389E20AE2BC5017C00306E53 /* AnimatedTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTextView.swift; sourceTree = "<group>"; };
+		389E20B12BC5427900306E53 /* Faelorehn.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Faelorehn.ttf; sourceTree = "<group>"; };
+		38F5FB7F2BC5498400CCC32C /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
+		38F5FB812BC54DF600CCC32C /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		38F5FB842BC54E4300CCC32C /* Process.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Process.mp3; sourceTree = "<group>"; };
+		38F5FB862BC54FA900CCC32C /* BlinkingCursorUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlinkingCursorUILabel.swift; sourceTree = "<group>"; };
 		7A4400EC88F3D1E70927D33C /* Pods_FingerPrediction.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FingerPrediction.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E984035F899CD8D7C1198727 /* Pods-FingerPrediction.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FingerPrediction.debug.xcconfig"; path = "Target Support Files/Pods-FingerPrediction/Pods-FingerPrediction.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +134,8 @@
 		389CC0A12BC40BEA00E6084F /* HelperClass */ = {
 			isa = PBXGroup;
 			children = (
+				38F5FB7F2BC5498400CCC32C /* SpeechManager.swift */,
+				38F5FB812BC54DF600CCC32C /* SoundManager.swift */,
 			);
 			path = HelperClass;
 			sourceTree = "<group>";
@@ -138,6 +150,8 @@
 		389CC0A32BC40C0400E6084F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				38F5FB832BC54E3100CCC32C /* Sounds */,
+				389E20B02BC5426600306E53 /* Fonts */,
 				389CC0AA2BC421A100E6084F /* Gifs */,
 				389CC0932BC40B4C00E6084F /* Assets.xcassets */,
 			);
@@ -174,8 +188,25 @@
 			isa = PBXGroup;
 			children = (
 				389E20AE2BC5017C00306E53 /* AnimatedTextView.swift */,
+				38F5FB862BC54FA900CCC32C /* BlinkingCursorUILabel.swift */,
 			);
 			path = CustomClasses;
+			sourceTree = "<group>";
+		};
+		389E20B02BC5426600306E53 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				389E20B12BC5427900306E53 /* Faelorehn.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		38F5FB832BC54E3100CCC32C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				38F5FB842BC54E4300CCC32C /* Process.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		6432AF572BB93544736BFBF4 /* Frameworks */ = {
@@ -247,6 +278,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				389CC0AC2BC421AB00E6084F /* FingerAnimation.gif in Resources */,
+				38F5FB852BC54E4300CCC32C /* Process.mp3 in Resources */,
+				389E20B22BC5427900306E53 /* Faelorehn.ttf in Resources */,
 				389CC0972BC40B4C00E6084F /* LaunchScreen.storyboard in Resources */,
 				389CC0942BC40B4C00E6084F /* Assets.xcassets in Resources */,
 				389CC0922BC40B4A00E6084F /* Main.storyboard in Resources */,
@@ -303,12 +336,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				389CC0A92BC4181F00E6084F /* UINavigationController+Extention.swift in Sources */,
+				38F5FB802BC5498400CCC32C /* SpeechManager.swift in Sources */,
 				389CC0AE2BC4274200E6084F /* UIImageView+Extention.swift in Sources */,
 				389CC08F2BC40B4A00E6084F /* HomeVC.swift in Sources */,
 				389CC08B2BC40B4A00E6084F /* AppDelegate.swift in Sources */,
 				389CC0A72BC417FE00E6084F /* UIView+Extension.swift in Sources */,
+				38F5FB872BC54FA900CCC32C /* BlinkingCursorUILabel.swift in Sources */,
 				389CC08D2BC40B4A00E6084F /* SceneDelegate.swift in Sources */,
 				389E20AF2BC5017C00306E53 /* AnimatedTextView.swift in Sources */,
+				38F5FB822BC54DF600CCC32C /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
