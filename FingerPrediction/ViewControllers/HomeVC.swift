@@ -12,7 +12,9 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var fingerImage: UIImageView!
-    var animatedTextView = AnimatedTextView()
+    @IBOutlet weak var fingerImageCenterY: NSLayoutConstraint!
+    var animatedTextView: AnimatedTextView?
+    var blinkingCursorLabel: BlinkingCursorLabel?
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -20,24 +22,40 @@ class HomeVC: UIViewController {
     private func setup(){
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler(_:)))
         fingerImage.addGestureRecognizer(longPressGesture)
+        SpeechManager.shared.speak(text: "Please put Your finger on sensor")
     }
     
     @objc func longPressHandler(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             fingerPuttedOnSensor()
+            self.fingerImage.removeGestureRecognizer(gesture)
+
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+            generator.prepare()
+            generator.impactOccurred()
         }
     }
     
     private func fingerPuttedOnSensor(){
+        SpeechManager.shared.speak(text: "Wait a Minute we are calculating")
+        SoundManager.shared.playWeirdSound()
         fingerImage.image = UIImage(named: "Finger1")
-        fingerImage.contentMode = .scaleAspectFit
-        let newY = mainView.frame.origin.y - 100
+        fingerImage.layer.borderWidth = 0
+        let newY = (-mainView.bounds.height / 2) + (fingerImage.bounds.height / 2) + 20
+        fingerImageCenterY.constant += newY
         UIView.animate(withDuration: 0.33, animations: {
-            self.fingerImage.frame.origin.y = newY
-            self.fingerImage.layer.borderWidth = 0
+            self.mainView.layoutIfNeeded()
+        }, completion: { _ in
+            
+            // Add Label with Blinking Cusrsor
+            self.blinkingCursorLabel = BlinkingCursorLabel(frame: CGRect(x: self.fingerImage.frame.origin.x, y: self.fingerImage.frame.maxY + 50, width: self.fingerImage.frame.width, height: 30))
+            self.blinkingCursorLabel?.text = "Analyzing......"
+            self.mainView.addSubview(self.blinkingCursorLabel ?? BlinkingCursorLabel())
+            
+            // Add Animated TextView
+            self.animatedTextView = AnimatedTextView(frame: CGRect(x: self.fingerImage.frame.origin.x, y: (self.blinkingCursorLabel?.frame.maxY ?? 0) + 50, width: self.fingerImage.frame.width, height: self.fingerImage.frame.height))
+            self.mainView.addSubview(self.animatedTextView ?? AnimatedTextView())
         })
-        
-        
     }
     
 }
