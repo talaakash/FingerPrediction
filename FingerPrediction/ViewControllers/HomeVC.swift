@@ -12,6 +12,7 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var fingerImage: UIImageView!
+    var animatedTextView = AnimatedTextView()
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -23,10 +24,20 @@ class HomeVC: UIViewController {
     
     @objc func longPressHandler(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
-            fingerImage.layer.removeAllAnimations()
-            fingerImage.image = UIImage(named: "Finger1")
-            fingerImage.contentMode = .scaleAspectFit
+            fingerPuttedOnSensor()
         }
+    }
+    
+    private func fingerPuttedOnSensor(){
+        fingerImage.image = UIImage(named: "Finger1")
+        fingerImage.contentMode = .scaleAspectFit
+        let newY = mainView.frame.origin.y - 100
+        UIView.animate(withDuration: 0.33, animations: {
+            self.fingerImage.frame.origin.y = newY
+            self.fingerImage.layer.borderWidth = 0
+        })
+        
+        
     }
     
 }

@@ -103,7 +103,7 @@ extension UIView {
             return self.backgoundImage
         }
         set{
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+            let imageView = UIImageView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: self.frame.size))
             imageView.image = newValue
             imageView.contentMode = .scaleToFill
             self.addSubview(imageView)
