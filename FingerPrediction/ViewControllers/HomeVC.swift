@@ -39,7 +39,7 @@ class HomeVC: UIViewController {
     private func fingerPuttedOnSensor(){
         SpeechManager.shared.speak(text: "Wait a Minute we are calculating")
         SoundManager.shared.playWeirdSound()
-        fingerImage.image = UIImage(named: "Finger1")
+        fingerImage.image = UIImage(named: Values.fingerPrintImages.randomElement() ?? "")
         fingerImage.layer.borderWidth = 0
         let newY = (-mainView.bounds.height / 2) + (fingerImage.bounds.height / 2) + 20
         fingerImageCenterY.constant += newY
