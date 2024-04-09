@@ -70,8 +70,9 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
-                        <outlet property="fingerImage" destination="HmP-rt-GvL" id="co8-SP-00z"/>
-                        <outlet property="mainView" destination="M4l-np-4zE" id="YZu-eN-Z1L"/>
+                        <outlet property="fingerImage" destination="HmP-rt-GvL" id="WMv-CP-llA"/>
+                        <outlet property="fingerImageCenterY" destination="c8p-4F-Ljp" id="j1h-eO-PJA"/>
+                        <outlet property="mainView" destination="M4l-np-4zE" id="e4G-11-gbx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
