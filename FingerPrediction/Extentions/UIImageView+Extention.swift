@@ -17,10 +17,14 @@ extension UIImageView{
             return ""
         }
         set{
-            if let gifURL = Bundle.main.url(forResource: newValue, withExtension: "gif") {
-                let imageResource = KF.ImageResource(downloadURL: gifURL)
-                self.kf.setImage(with: imageResource)
-            }
+            self.setGif(name: newValue)
+        }
+    }
+    
+    func setGif(name: String){
+        if let gifURL = Bundle.main.url(forResource: name, withExtension: "gif") {
+            let imageResource = KF.ImageResource(downloadURL: gifURL)
+            self.kf.setImage(with: imageResource)
         }
     }
 }

@@ -25,14 +25,22 @@ class HomeVC: UIViewController {
         SpeechManager.shared.speak(text: "Please put Your finger on sensor")
     }
     
+    deinit{
+        print("HomeVC Cleared from Stack")
+    }
+    
     @objc func longPressHandler(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
-            fingerPuttedOnSensor()
-            self.fingerImage.removeGestureRecognizer(gesture)
-
-            let generator = UIImpactFeedbackGenerator(style: .heavy)
-            generator.prepare()
-            generator.impactOccurred()
+            fingerImage.animateShadowHighlight()
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+                self.fingerPuttedOnSensor()
+                self.fingerImage.removeGestureRecognizer(gesture)
+                
+                let generator = UIImpactFeedbackGenerator(style: .heavy)
+                generator.prepare()
+                generator.impactOccurred()
+            })
+            
         }
     }
     
