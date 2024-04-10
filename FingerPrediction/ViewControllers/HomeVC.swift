@@ -30,9 +30,11 @@ class HomeVC: UIViewController {
     }
     
     @objc func longPressHandler(_ gesture: UILongPressGestureRecognizer) {
+        fingerImage.layer.borderWidth = 0
+        fingerImage.addSmokyAnimation()
         if gesture.state == .began {
-//            fingerImage.animateShadowHighlight()
             Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+                self.fingerImage.removeSmokyAnimation()
                 self.fingerPuttedOnSensor()
                 self.fingerImage.removeGestureRecognizer(gesture)
                 
@@ -63,7 +65,21 @@ class HomeVC: UIViewController {
             // Add Animated TextView
             self.animatedTextView = AnimatedTextView(frame: CGRect(x: self.fingerImage.frame.origin.x, y: (self.blinkingCursorLabel?.frame.maxY ?? 0) + 50, width: self.fingerImage.frame.width, height: self.fingerImage.frame.height))
             self.mainView.addSubview(self.animatedTextView ?? AnimatedTextView())
+            
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { _ in
+                self.showPrediction()
+            })
         })
+    }
+    
+    private func showPrediction(){
+        SoundManager.shared.stopSound()
+        fingerImage.removeFromSuperview()
+        animatedTextView?.removeFromSuperview()
+        let percentage = Int.random(in: 0...100)
+        blinkingCursorLabel?.frame.size.height = 50
+        blinkingCursorLabel?.frame.size.width = mainView.frame.width
+        blinkingCursorLabel?.text = "\(percentage)% Notty"
     }
     
 }
