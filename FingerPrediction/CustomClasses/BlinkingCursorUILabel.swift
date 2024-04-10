@@ -46,4 +46,8 @@ class BlinkingCursorLabel: UILabel {
             self?.cursorView.isHidden = !self!.isCursorVisible
         }
     }
+    
+    func stopBlinking(){
+        cursorView.removeFromSuperview()
+    }
 }
