@@ -31,7 +31,7 @@ class HomeVC: UIViewController {
     
     @objc func longPressHandler(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
-            fingerImage.animateShadowHighlight()
+//            fingerImage.animateShadowHighlight()
             Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
                 self.fingerPuttedOnSensor()
                 self.fingerImage.removeGestureRecognizer(gesture)

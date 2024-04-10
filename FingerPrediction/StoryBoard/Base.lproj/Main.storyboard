@@ -18,6 +18,9 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M4l-np-4zE">
                                 <rect key="frame" x="16" y="155.33333333333331" width="361" height="541.33333333333348"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GreenBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Wr5-pu-h6Z">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="541.33333333333337"/>
+                                    </imageView>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HmP-rt-GvL">
                                         <rect key="frame" x="105.66666666666669" y="195.66666666666663" width="150" height="150"/>
                                         <constraints>
@@ -42,8 +45,12 @@
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="M4l-np-4zE" secondAttribute="height" multiplier="1:1.5" id="C7G-L2-ach"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wr5-pu-h6Z" secondAttribute="trailing" id="Nlm-vI-aGY"/>
+                                    <constraint firstItem="Wr5-pu-h6Z" firstAttribute="top" secondItem="M4l-np-4zE" secondAttribute="top" id="PRT-tL-WND"/>
                                     <constraint firstItem="HmP-rt-GvL" firstAttribute="centerY" secondItem="M4l-np-4zE" secondAttribute="centerY" id="c8p-4F-Ljp"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wr5-pu-h6Z" secondAttribute="bottom" id="dcn-hg-lrn"/>
                                     <constraint firstItem="HmP-rt-GvL" firstAttribute="centerX" secondItem="M4l-np-4zE" secondAttribute="centerX" id="iFa-bJ-OGo"/>
+                                    <constraint firstItem="Wr5-pu-h6Z" firstAttribute="leading" secondItem="M4l-np-4zE" secondAttribute="leading" id="qv3-1b-F5C"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="CornerRadius">
@@ -52,7 +59,6 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="backgoundImage" value="GreenBackground"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layerOpacity">
                                         <real key="value" value="0.40000000000000002"/>
                                     </userDefinedRuntimeAttribute>
