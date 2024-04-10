@@ -98,6 +98,20 @@ extension UIView {
     }
     
     @IBInspectable
+       var backgoundImage: UIImage{
+           get{
+               return self.backgoundImage
+           }
+           set{
+               let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+               imageView.image = newValue
+               imageView.contentMode = .scaleToFill
+               self.addSubview(imageView)
+               sendSubviewToBack(imageView)
+           }
+       }
+    
+    @IBInspectable
     var makeCircular: Bool{
         get{
             return false
@@ -105,5 +119,29 @@ extension UIView {
         set{
             self.layer.cornerRadius = bounds.height / 2
         }
+    }
+    
+    @IBInspectable
+    var animateShadow: Bool{
+        get{
+            return false
+        }
+        set {
+            let animation = CABasicAnimation(keyPath: "shadowOpacity")
+            animation.fromValue = 0.0
+            animation.toValue = 1.0
+            animation.duration = 0.5
+            animation.autoreverses = true
+            animation.repeatCount = Float.infinity
+            layer.shadowColor = UIColor.white.cgColor
+            layer.shadowOffset = CGSize(width: 0, height: 0)
+            layer.shadowOpacity = 1
+            layer.shadowRadius = 10
+            layer.add(animation, forKey: "shadowOpacityAnimation")
+        }
+    }
+    
+    func stopAnimatingShadow() {
+        layer.removeAllAnimations()
     }
 }
