@@ -15,6 +15,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var fingerImageCenterY: NSLayoutConstraint!
     var animatedTextView: AnimatedTextView?
     var blinkingCursorLabel: BlinkingCursorLabel?
+    var scaledImage: UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -23,6 +24,8 @@ class HomeVC: UIViewController {
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressHandler(_:)))
         fingerImage.addGestureRecognizer(longPressGesture)
         SpeechManager.shared.speak(text: "Please put Your finger on sensor")
+        scaledImage = UIImage(named: "FingerTouched")
+        scaledImage = scaledImage?.scaledImage(withScale: 2)
     }
     
     deinit{
@@ -30,19 +33,20 @@ class HomeVC: UIViewController {
     }
     
     @objc func longPressHandler(_ gesture: UILongPressGestureRecognizer) {
-        fingerImage.layer.borderWidth = 0
-        fingerImage.addSmokyAnimation()
         if gesture.state == .began {
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
-                self.fingerImage.removeSmokyAnimation()
-                self.fingerPuttedOnSensor()
-                self.fingerImage.removeGestureRecognizer(gesture)
-                
-                let generator = UIImpactFeedbackGenerator(style: .heavy)
-                generator.prepare()
-                generator.impactOccurred()
+            fingerImage.image = UIImage(named: "FingerTouched")
+            UIView.animate(withDuration: 1, animations: {
+                self.fingerImage.layer.borderWidth = 0
+                self.fingerImage.image = self.scaledImage
+            }, completion: { _ in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.22, execute: {
+                    self.fingerPuttedOnSensor()
+                    self.fingerImage.removeGestureRecognizer(gesture)
+                    let generator = UIImpactFeedbackGenerator(style: .heavy)
+                    generator.prepare()
+                    generator.impactOccurred()
+                })
             })
-            
         }
     }
     
